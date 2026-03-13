@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "main";
-  src: url("/fonts/main.ttf");
+  src: url("/fonts/ABCDiatypeMono.woff2");
   font-weight: normal;
   font-style: normal;
 }
@@ -14,11 +14,37 @@
 html,
 body,
 #root {
-  width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
-  /* Prevent horizontal scroll during GSAP animations */
+  width: 100%;
+  min-height: 100%;
+  background-color: #000; /* Prevent white flashes */
+}
+
+/* Make sure absolutely NO overflow hiding is on the main containers */
+html,
+body {
   overflow-x: hidden;
-  background-color: #000000;
+}
+
+/* 2. Official Lenis boilerplate styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
