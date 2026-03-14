@@ -46,17 +46,15 @@ export default function App() {
         autoRaf={false}
         options={{ lerp: 0.05, smoothWheel: true }}
       >
-        {/* Dynamic Background Image */}
-        <div className="app-background fixed inset-0 z-0 overflow-hidden">
+        <div className="fixed inset-0 z-0 overflow-hidden bg-[#c3281a]">
           <img
             src="/heroRed.avif"
             alt="Background"
-            // FIX: Make the image 120% height, and pull it up by 20% to chop off the top!
-            className="absolute left-0 w-full h-[200%] -top-[1%] object-cover"
+            className="absolute left-0 w-full h-[120%] -top-[10%] object-cover"
           />
         </div>
         {/* 3D Canvas */}
-        <div className="fixed inset-0 z-10 pointer-events-none">
+        <div className="fixed inset-0 z-30 pointer-events-none">
           <CanvasScene />
         </div>
 
