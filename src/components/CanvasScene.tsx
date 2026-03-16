@@ -3,6 +3,9 @@ import { Environment, useGLTF, Center } from "@react-three/drei";
 import { useRef, useEffect, Suspense } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function TridentModel() {
   const outerGroupRef = useRef<THREE.Group>(null);
@@ -17,51 +20,44 @@ function TridentModel() {
   useEffect(() => {
     if (!outerGroupRef.current) return;
 
-    const scrollTl = gsap.timeline({
+    // 1. ENTRY ROTATION (Optional: You can keep this or remove if you only want slider rotation)
+    // This assumes you want a spin before hitting the slider.
+
+    // 2. EXIT ANIMATION: Glues the Trident to the previous section!
+    // As the Ingredients section scrolls up, we push the model UP out of the camera.
+    gsap.to(outerGroupRef.current.position, {
+      y: 8, // Moves it high up out of camera view (adjust between 6-10 if needed)
+      ease: "none",
       scrollTrigger: {
-        trigger: document.body,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
+        trigger: "#ingredients-section",
+        start: "top bottom", // Starts exactly when the Grid section enters the bottom of the screen
+        end: "top top", // Ends exactly when the Grid section hits the top of the screen
+        scrub: true, // Ties it perfectly to your scroll speed
       },
     });
 
-    scrollTl.to(outerGroupRef.current.rotation, {
-      y: Math.PI * 4,
-      ease: "none",
-    });
-
+    // 3. SLIDER LOGIC: Snaps to angles during the 4 slides
     const handlePillarChange = (e: any) => {
       const index = e.detail?.index;
       if (index === undefined) return;
-
-      scrollTl.pause();
 
       gsap.to(outerGroupRef.current!.rotation, {
         y: index * (Math.PI / 2),
         duration: 1,
         ease: "power3.out",
-        onComplete: () => scrollTl.resume(),
+        overwrite: "auto", // Prevents jitter by killing conflicts
       });
-
-      gsap.fromTo(
-        outerGroupRef.current!.scale,
-        { x: 0.18, y: 0.18, z: 0.18 },
-        { x: 0.2, y: 0.2, z: 0.2, duration: 1, ease: "elastic.out(1, 0.3)" },
-      );
     };
 
     window.addEventListener("changePillar", handlePillarChange);
     return () => {
       window.removeEventListener("changePillar", handlePillarChange);
-      scrollTl.kill();
     };
   }, []);
 
   // --- GLOBAL MOUSE TRACKER ---
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      // Normalize mouse coordinates from -1 to +1 (mimicking R3F's state.pointer)
       mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
       mouse.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
     };
@@ -74,7 +70,6 @@ function TridentModel() {
   useFrame(() => {
     if (!innerGroupRef.current) return;
 
-    // Grab the custom mouse values instead of state.pointer
     const { x, y } = mouse.current;
 
     const targetRotationX = (y * Math.PI) / 8;

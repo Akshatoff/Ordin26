@@ -11,6 +11,38 @@
   --font-main: "main", sans-serif;
 }
 
+@font-face {
+  font-family: "prim";
+  src: url("/fonts/ABCDiatype.woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme {
+  --font-prim: "prim", sans-serif;
+}
+@font-face {
+  font-family: "druk";
+  src: url("/fonts/DrukWide-Heavy.woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme {
+  --font-druk: "druk", sans-serif;
+}
+
+@font-face {
+  font-family: "druknw";
+  src: url("/fonts/Druk-Heavy.woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme {
+  --font-druknw: "druknw", sans-serif;
+}
+
 html,
 body,
 #root {

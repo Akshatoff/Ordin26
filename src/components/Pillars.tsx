@@ -139,12 +139,12 @@ export default function Pillars() {
           className="relative z-10 w-full h-full flex flex-col items-center justify-between py-12 px-12 opacity-0"
         >
           {/* Top Header & Navigation */}
-          <div className="w-full flex flex-col items-center gap-6 mt-10">
-            <div className="flex gap-8 text-xs tracking-widest border-t border-white/20 pt-4 w-3/4 justify-center">
+          <div className="w-full flex flex-col items-center gap-6 mt-[5rem]!">
+            <div className="flex text-xs tracking-widest pt-4 w-3/4 justify-center">
               {PILLARS.map((pillar, i) => (
                 <button
                   key={i}
-                  className={`transition-all duration-500 cursor-default ${
+                  className={`transition-all duration-500 cursor-default py-[14px]! px-[24px]! border border-solid border-white color-white backdrop-blur-xl text-[1rem] rounded-[100px] flex justify-center items-center pointer font-main bg-[rgba(255,255,255,0.2)] ${
                     activeIdx === i ? "opacity-100 font-bold" : "opacity-40"
                   }`}
                 >
@@ -162,7 +162,7 @@ export default function Pillars() {
                 className="text-6xl font-black leading-none tracking-tighter"
               >
                 {PILLARS[activeIdx].title.split(" ").map((word, i) => (
-                  <div key={i} className="animate-text">
+                  <div key={i} className="animate-text ml-40!">
                     {word}
                   </div>
                 ))}
@@ -170,13 +170,13 @@ export default function Pillars() {
             </div>
 
             <div
-              className="w-1/3 flex flex-col items-end text-right"
+              className="w-1/3 flex flex-col items-start text-left mr-40! font-prim text-xl leading-[1.14] antialiased"
               key={`desc-${activeIdx}`}
             >
-              <div className="text-sm font-mono opacity-50 mb-4 animate-text">
+              <div className="text-sm opacity-50 mb-4 animate-text font-prim antialiased">
                 0{activeIdx + 1}/04
               </div>
-              <p className="text-sm tracking-wider leading-relaxed max-w-[300px] animate-text">
+              <p className="text-[1rem] tracking-wider leading-relaxed max-w-[500px] animate-text font-prim antialiased">
                 {PILLARS[activeIdx].desc}
               </p>
             </div>
@@ -184,20 +184,12 @@ export default function Pillars() {
 
           {/* Bottom Subtitle */}
           <div
-            className="max-w-md text-center text-xs tracking-widest opacity-80 mb-10"
+            className="max-w-md text-center text-lg tracking-widest opacity-80 mb-30!"
             key={`sub-${activeIdx}`}
           >
-            <div className="animate-text">{PILLARS[activeIdx].subtitle}</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-          className="max-w-md text-center text-xs tracking-widest opacity-80 mb-10"
-            key={`sub-${activeIdx}`}
-          >
-            <div className="animate-text">{PILLARS[activeIdx].subtitle}</div>
+            <div className="animate-text font-main">
+              {PILLARS[activeIdx].subtitle}
+            </div>
           </div>
         </div>
       </div>
