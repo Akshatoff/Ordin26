@@ -186,7 +186,7 @@ export default function Team() {
       {TEAM_MEMBERS.map((member, index) => (
         <div
           key={member.id}
-          ref={(el) => (nodesRef.current[index] = el)}
+          ref={(el) => { nodesRef.current[index] = el; }}
           // 1. The 'group' class is here
           className="group absolute flex items-center gap-3 bg-white px-2! md:p-3 rounded-full shadow-xl border border-black/5 hover:scale-110 transition-transform cursor-pointer z-20 hover:z-50 pointer-events-auto"
           style={{
