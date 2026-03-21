@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import Pillars from "./components/Pillars";
 import CanvasScene from "./components/CanvasScene";
 import Ingredients from "./components/Ingredients";
+import Team from "./components/Team"; // <-- NEW IMPORT
 import Science from "./components/Science";
 import Footer from "./components/Footer";
 
@@ -37,9 +38,6 @@ export default function App() {
 
   return (
     <>
-      {/* autoRaf={false} is critical here because we are manually
-        telling GSAP to run the Lenis RAF loop above!
-      */}
       <ReactLenis
         root
         ref={lenisRef}
@@ -48,21 +46,23 @@ export default function App() {
       >
         <div className="fixed inset-0 z-0 overflow-hidden bg-[#c3281a]">
           <img
-            src="/heroRed.avif"
+            src="/herodb.jpeg"
             alt="Background"
-            className="absolute left-0 w-full h-[120%] -top-[10%] object-cover"
+            className="absolute left-0 w-full h-[170%] -top-[0%] object-cover"
           />
         </div>
+
         {/* 3D Canvas */}
         <div className="fixed inset-0 z-30 pointer-events-none">
           <CanvasScene />
         </div>
 
         {/* Main Content */}
-        <main className="relative z-20 w-full text-white font-sans uppercase">
+        <main className="relative w-full text-white font-sans uppercase">
           <Hero />
           <Pillars />
           <Ingredients />
+          <Team /> {/* <-- NEW SECTION ADDED HERE */}
           <Science />
           <Footer />
         </main>

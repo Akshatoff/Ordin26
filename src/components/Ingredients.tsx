@@ -67,7 +67,7 @@ export default function Ingredients() {
       {/* We make it slightly larger than the screen (w-[120%]) so the edges don't show when it starts */}
       <div
         ref={gridRef}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vh] grid grid-cols-3 grid-rows-3 gap-4 p-8"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vh] grid grid-cols-3 grid-rows-3 gap-4 p-8 pointer-events-none"
         style={{ transformOrigin: "center center" }}
       >
         {/* ROW 1 */}
