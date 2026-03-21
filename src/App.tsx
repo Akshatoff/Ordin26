@@ -1,4 +1,4 @@
-import { ReactLenis } from "lenis/react";
+import { ReactLenis, LenisRef } from "lenis/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
@@ -13,22 +13,19 @@ import Footer from "./components/Footer";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
-  const lenisRef = useRef<unknown>(null);
+  const lenisRef = useRef<LenisRef>(null);
 
   useEffect(() => {
-    // 1. Tell ScrollTrigger to update every time Lenis scrolls
-    if (lenisRef.current?.lenis) {
-      lenisRef.current.lenis.on("scroll", ScrollTrigger.update);
+    const lenisInstance = lenisRef.current?.lenis;
+    if (lenisInstance) {
+      lenisInstance.on("scroll", ScrollTrigger.update);
     }
 
-    // 2. Add Lenis to the GSAP ticker so they run on the exact same frame loop
     const updateLenis = (time: number) => {
-      lenisRef.current?.lenis?.raf(time * 1000);
+      lenisInstance?.raf(time * 1000); // ✅ Use directly
     };
 
     gsap.ticker.add(updateLenis);
-
-    // Disable GSAP lag smoothing to prevent jitter with Lenis
     gsap.ticker.lagSmoothing(0);
 
     return () => {

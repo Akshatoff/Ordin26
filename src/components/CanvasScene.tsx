@@ -37,6 +37,7 @@ function TridentModel() {
     });
 
     // 3. SLIDER LOGIC: Snaps to angles during the 4 slides
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handlePillarChange = (e: any) => {
       const index = e.detail?.index;
       if (index === undefined) return;
