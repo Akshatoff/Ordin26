@@ -54,7 +54,7 @@ export default function Hero() {
       {/* BEYOND ALWAYS IMAGE */}
       <div className="absolute bottom-10 left-0 w-full flex justify-center pointer-events-none px-8">
         <img
-          src="/herotext.webp"
+          src="/ordin.png"
           alt="Beyond Always"
           // Added "beyond-img" class here to target it with GSAP
           className="beyond-img w-full max-w-[80vw] md:max-w-5xl opacity-40 mix-blend-screen object-contain"

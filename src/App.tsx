@@ -16,22 +16,28 @@ export default function App() {
   const lenisRef = useRef<LenisRef>(null);
 
   useEffect(() => {
-    const lenisInstance = lenisRef.current?.lenis;
-    if (lenisInstance) {
-      lenisInstance.on("scroll", ScrollTrigger.update);
-    }
+      // We can still optionally bind the scroll event here if it's ready
+      if (lenisRef.current?.lenis) {
+        lenisRef.current.lenis.on("scroll", ScrollTrigger.update);
+      }
 
-    const updateLenis = (time: number) => {
-      lenisInstance?.raf(time * 1000); // ✅ Use directly
-    };
+      const updateLenis = (time: number) => {
+        // FIX: Read dynamically from the ref on EVERY frame!
+        // This way, the moment Lenis is ready, it starts updating.
+        lenisRef.current?.lenis?.raf(time * 1000);
+      };
 
-    gsap.ticker.add(updateLenis);
-    gsap.ticker.lagSmoothing(0);
+      gsap.ticker.add(updateLenis);
+      gsap.ticker.lagSmoothing(0);
 
-    return () => {
-      gsap.ticker.remove(updateLenis);
-    };
-  }, []);
+      return () => {
+        gsap.ticker.remove(updateLenis);
+        // Good practice: cleanup the scroll listener too
+        if (lenisRef.current?.lenis) {
+          lenisRef.current.lenis.off("scroll", ScrollTrigger.update);
+        }
+      };
+    }, []);
 
   return (
     <>
