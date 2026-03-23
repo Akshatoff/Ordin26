@@ -6,7 +6,7 @@ import Hero from "./components/Hero";
 import Pillars from "./components/Pillars";
 import CanvasScene from "./components/CanvasScene";
 import Ingredients from "./components/Ingredients";
-import Team from "./components/Team"; // <-- NEW IMPORT
+import Team from "./components/Team";
 import Science from "./components/Science";
 import Footer from "./components/Footer";
 
@@ -14,30 +14,46 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   const lenisRef = useRef<LenisRef>(null);
+  const bgRef = useRef<HTMLImageElement>(null); // 1. NEW: Ref for the background image
 
   useEffect(() => {
-      // We can still optionally bind the scroll event here if it's ready
+    if (lenisRef.current?.lenis) {
+      lenisRef.current.lenis.on("scroll", ScrollTrigger.update);
+    }
+
+    const updateLenis = (time: number) => {
+      lenisRef.current?.lenis?.raf(time * 1000);
+    };
+
+    gsap.ticker.add(updateLenis);
+    gsap.ticker.lagSmoothing(0);
+
+    // 2. NEW: Make the background image actually scroll!
+    const ctx = gsap.context(() => {
+      gsap.to(bgRef.current, {
+        // 1. Move it up aggressively to reveal the bottom of your 240% tall image
+        yPercent: -55, 
+        ease: "none",
+        scrollTrigger: {
+          trigger: document.body,
+          start: "top top",
+          // 2. CRITICAL FIX: Only stretch this animation over the first 1.5 screens! 
+          // This makes it finish right as the Pillars section comes into view.
+          end: () => `+=${window.innerHeight * 1.2}`, 
+          // 3. Set scrub to 'true' (or a low number like 0.5) to make it highly responsive
+          scrub: true, 
+        },
+      });
+    });
+
+    return () => {
+      gsap.ticker.remove(updateLenis);
       if (lenisRef.current?.lenis) {
-        lenisRef.current.lenis.on("scroll", ScrollTrigger.update);
+        lenisRef.current.lenis.off("scroll", ScrollTrigger.update);
       }
-
-      const updateLenis = (time: number) => {
-        // FIX: Read dynamically from the ref on EVERY frame!
-        // This way, the moment Lenis is ready, it starts updating.
-        lenisRef.current?.lenis?.raf(time * 1000);
-      };
-
-      gsap.ticker.add(updateLenis);
-      gsap.ticker.lagSmoothing(0);
-
-      return () => {
-        gsap.ticker.remove(updateLenis);
-        // Good practice: cleanup the scroll listener too
-        if (lenisRef.current?.lenis) {
-          lenisRef.current.lenis.off("scroll", ScrollTrigger.update);
-        }
-      };
-    }, []);
+      ctx.revert(); // Clean up GSAP
+    };
+  }, []);
 
   return (
     <>
@@ -47,11 +63,12 @@ export default function App() {
         autoRaf={false}
         options={{ lerp: 0.05, smoothWheel: true }}
       >
-        <div className="fixed inset-0 z-0 overflow-hidden bg-[#c3281a]">
+        <div className="fixed inset-0 z-0 overflow-hidden bg-[#160100]">
           <img
+            ref={bgRef} // 3. NEW: Attach the ref to the image
             src="/herodb.jpeg"
             alt="Background"
-            className="absolute left-0 w-full h-[170%] -top-[0%] object-cover"
+            className="absolute left-0 w-full h-[200%] -top-[0%] object-cover"
           />
         </div>
 
@@ -65,7 +82,7 @@ export default function App() {
           <Hero />
           <Pillars />
           <Ingredients />
-          <Team /> {/* <-- NEW SECTION ADDED HERE */}
+          <Team />
           <Science />
           <Footer />
         </main>

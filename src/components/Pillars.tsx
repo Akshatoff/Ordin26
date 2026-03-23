@@ -42,55 +42,61 @@ export default function Pillars() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. The 80% to 100% Expanding Entry Effect
-      gsap.fromTo(
-        innerRef.current,
-        { clipPath: "inset(15% 10% 15% 10% round 32px)" },
-        {
-          clipPath: "inset(0% 0% 0% 0% round 0px)",
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top bottom",
-            end: "top top",
-            scrub: true,
-          },
-        },
-      );
+      // ONE Master Timeline to control everything in perfect order
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top", // 1. Wait until the section hits the TOP of the screen to pin
+          end: "+=500%", // Give enough scrolling distance for all animations
+          pin: true,
+          scrub: true,
+          onUpdate: (self) => {
+            // Reserve the first 20% of the pinned scroll for the expansion & UI fade
+            const startSlidesProgress = 0.2;
 
-      // 2. The Delayed UI Fade-In (Triggers exactly when clip-path hits 100%)
-      gsap.fromTo(
-        uiRef.current,
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top top", // Fires exactly when the section pins
-            toggleActions: "play none none reverse", // Reverses if user scrolls back up
+            if (self.progress < startSlidesProgress) {
+              if (activeIdxRef.current !== 0) {
+                activeIdxRef.current = 0;
+                setActiveIdx(0);
+              }
+            } else {
+              // Calculate the 4 slides over the remaining 80% of the scroll
+              const slideProgress =
+                (self.progress - startSlidesProgress) /
+                (1 - startSlidesProgress);
+              const index = Math.min(3, Math.floor(slideProgress * 4));
+              
+              if (index !== activeIdxRef.current) {
+                activeIdxRef.current = index;
+                setActiveIdx(index);
+                window.dispatchEvent(
+                  new CustomEvent("changePillar", { detail: { index } })
+                );
+              }
+            }
           },
-        },
-      );
-
-      // 3. The Pinning and Crossfading ScrollTrigger
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top top",
-        end: "+=400%",
-        pin: true,
-        onUpdate: (self) => {
-          const index = Math.min(3, Math.floor(self.progress * 4));
-          if (index !== activeIdxRef.current) {
-            activeIdxRef.current = index;
-            setActiveIdx(index);
-            window.dispatchEvent(
-              new CustomEvent("changePillar", { detail: { index } }),
-            );
-          }
         },
       });
+
+      // 2. Expand the container (Happens first while pinned)
+      tl.fromTo(
+        innerRef.current,
+        { clipPath: "inset(10% 15% 10% 15% round 32px)" },
+        {
+          clipPath: "inset(0% 0% 0% 0% round 0px)",
+          duration: 2,
+          ease: "power1.inOut",
+        }
+      )
+        // 3. Fade in the UI (Happens right as the expansion finishes)
+        .fromTo(
+          uiRef.current,
+          { opacity: 0 },
+          { opacity: 1, duration: 1, ease: "power1.out" }
+        )
+        // 4. Dummy duration to keep it pinned while you scroll through the 4 text slides
+        .to({}, { duration: 8 });
+
     }, containerRef);
 
     return () => ctx.revert();
@@ -109,6 +115,8 @@ export default function Pillars() {
   }, [activeIdx]);
 
   return (
+    <>
+    <div className="w-full h-[70vh]"></div>
     <section
       id="pillars-section"
       ref={containerRef}
@@ -194,5 +202,6 @@ export default function Pillars() {
         </div>
       </div>
     </section>
+    </>
   );
 }

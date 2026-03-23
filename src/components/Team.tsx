@@ -9,7 +9,7 @@ const TEAM_MEMBERS = [
   {
     id: 1,
     name: "Aneira Shewaramani",
-    quote: "Dream it, then build it.",
+    quote: "The chosen one",
     x: 40,
     y: 18,
     img: "/rect.avif",
@@ -17,7 +17,7 @@ const TEAM_MEMBERS = [
   {
     id: 2,
     name: "Akshat Hatwal",
-    quote: "Pixels in perfect harmony.",
+    quote: "",
     x: 65,
     y: 14,
     img: "/rect2.avif",
@@ -177,8 +177,8 @@ export default function Team() {
       {/* 2. THE CENTRAL TEXT */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center pointer-events-none px-4">
         <h2 className="text-4xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tighter">
-          A DEDICATED TEAM,
-          <br />A UNITED CULTURE
+          Masters of All
+          <br />Trades
         </h2>
       </div>
 

@@ -34,8 +34,8 @@ export default function Footer() {
       </div>
 
       <div className="mt-32 w-full flex flex-col items-center">
-        <h1 className="text-[18vw] font-black leading-none tracking-tighter opacity-90">
-          SOMPOWER
+        <h1 className="text-[12.2vw] font-black leading-none tracking-tighter opacity-90">
+          ORDINATRIX 26.0
         </h1>
         <div className="w-full flex justify-between text-[10px] tracking-widest opacity-40 mt-4">
           <span>© 2026 SOM POWER. ALL RIGHTS RESERVED.</span>
