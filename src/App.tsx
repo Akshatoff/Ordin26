@@ -9,6 +9,7 @@ import Ingredients from "./components/Ingredients";
 import Team from "./components/Team";
 import Update from "./components/Update";
 import Footer from "./components/Footer";
+import ScrollProgress from "./components/ScrollProgress";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,6 +77,7 @@ export default function App() {
         <div className="fixed inset-0 z-30 pointer-events-none">
           <CanvasScene />
         </div>
+        <ScrollProgress></ScrollProgress>
 
         {/* Main Content */}
         <main className="relative w-full text-white font-sans uppercase">
