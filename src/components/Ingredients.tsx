@@ -121,11 +121,11 @@ export default function Ingredients() {
           {/* Huge Typography & Paragraph */}
           <div className="w-full flex flex-col md:flex-row justify-between items-end pointer-events-auto ml-5!">
             <div className="flex-1">
-              <h2 className="text-5xl md:text-[4rem] font-black leading-none tracking-wider whitespace-nowrap font-druk mt-100!">
+              <h2 className="text-5xl md:text-[4rem] font-black leading-none tracking-wider whitespace-nowrap font-druk mt-70!">
                 <span className="font-druknw tracking-normal">ANCIENT</span>{" "}
                 WISDOM
               </h2>
-              <p className="max-w-[80vw] text-lg md:text-2xl leading-snug tracking-wide font-medium text-white mt-56! font-prim">
+              <p className="max-w-[80vw] text-lg md:text-2xl leading-snug tracking-wide font-medium text-white mt-46! font-prim">
                 SÖM is inspired by the ancient SOMA — a sacred elixir known to
                 bring vitality and a higher State of Mind. We've traveled from
                 the heart of the Amazon to modern labs to bottle this essence

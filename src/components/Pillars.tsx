@@ -35,24 +35,44 @@ const PILLARS = [
 export default function Pillars() {
   const containerRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
-  const uiRef = useRef<HTMLDivElement>(null); // NEW: Controls the UI fade-in
+  const uiRef = useRef<HTMLDivElement>(null); 
 
   const [activeIdx, setActiveIdx] = useState(0);
   const activeIdxRef = useRef(0);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // ONE Master Timeline to control everything in perfect order
+      
+      // 1. THE EXPANSION ANIMATION 
+      // This happens WHILE you are scrolling up. It starts the second it enters the viewport
+      // and finishes exactly when it hits the top.
+      gsap.fromTo(
+        innerRef.current,
+        { clipPath: "inset(10% 15% 10% 15% round 32px)" },
+        {
+          clipPath: "inset(0% 0% 0% 0% round 0px)",
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top bottom", // Starts as soon as it enters from the bottom
+            end: "top top",      // Finishes right when it hits the top
+            scrub: true,
+          },
+        }
+      );
+
+      // 2. THE PINNED TIMELINE (UI Fade & Image Slides)
+      // This takes over once the section hits the top and locks in place.
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top top", // 1. Wait until the section hits the TOP of the screen to pin
-          end: "+=500%", // Give enough scrolling distance for all animations
+          start: "top top", 
+          end: "+=400%", // 4 screens worth of scrolling for the 4 slides
           pin: true,
           scrub: true,
           onUpdate: (self) => {
-            // Reserve the first 20% of the pinned scroll for the expansion & UI fade
-            const startSlidesProgress = 0.2;
+            // Give the UI fade-in the first 10% of the scroll
+            const startSlidesProgress = 0.1;
 
             if (self.progress < startSlidesProgress) {
               if (activeIdxRef.current !== 0) {
@@ -60,7 +80,7 @@ export default function Pillars() {
                 setActiveIdx(0);
               }
             } else {
-              // Calculate the 4 slides over the remaining 80% of the scroll
+              // Calculate the 4 slides over the remaining 90%
               const slideProgress =
                 (self.progress - startSlidesProgress) /
                 (1 - startSlidesProgress);
@@ -78,24 +98,14 @@ export default function Pillars() {
         },
       });
 
-      // 2. Expand the container (Happens first while pinned)
+      // Fade in the UI right after pinning
       tl.fromTo(
-        innerRef.current,
-        { clipPath: "inset(10% 15% 10% 15% round 32px)" },
-        {
-          clipPath: "inset(0% 0% 0% 0% round 0px)",
-          duration: 2,
-          ease: "power1.inOut",
-        }
+        uiRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 1, ease: "power1.out" }
       )
-        // 3. Fade in the UI (Happens right as the expansion finishes)
-        .fromTo(
-          uiRef.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 1, ease: "power1.out" }
-        )
-        // 4. Dummy duration to keep it pinned while you scroll through the 4 text slides
-        .to({}, { duration: 8 });
+      // Dummy duration to keep it pinned while you scroll through the 4 text slides
+      .to({}, { duration: 8 });
 
     }, containerRef);
 

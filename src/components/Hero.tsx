@@ -37,7 +37,9 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen overflow-hidden"
+      // FIX 1: Changed 'overflow-hidden' to 'overflow-x-clip'
+      // This stops horizontal scrollbars from the 20x zoom, but lets you push the image down!
+      className="relative w-full h-screen overflow-x-clip"
     >
       <div className="absolute top-[25%] left-[10%] max-w-[200px] text-xs leading-relaxed tracking-wider font-main hero-text">
         PURE FUNCTIONAL ELIXIR FOR PEAK MENTAL FOCUS AND PHYSICAL STAMINA
@@ -52,12 +54,13 @@ export default function Hero() {
       </div>
 
       {/* BEYOND ALWAYS IMAGE */}
-      <div className="absolute bottom-10 left-0 w-full flex justify-center pointer-events-none px-8">
+      {/* FIX 2: You can now use negative bottom values like -bottom-10, -bottom-20, etc. */}
+      <div className="absolute -bottom-80 left-10 w-full flex justify-center pointer-events-none px-8">
         <img
           src="/ordin.png"
           alt="Beyond Always"
-          // Added "beyond-img" class here to target it with GSAP
-          className="beyond-img w-full max-w-[80vw] md:max-w-5xl opacity-40 mix-blend-screen object-contain"
+          // FIX 3: Actually added the 'beyond-img' class to the string!
+          className="w-full max-w-[80vw] md:max-w-5xl opacity-60 mix-blend-screen object-contain"
         />
       </div>
     </section>

@@ -40,7 +40,7 @@ const TEAM_MEMBERS = [
   },
   {
     id: 5,
-    name: "Aradhya Bhola",
+    name: "Aradhya Bhola",  
     quote: "Crafting the final polish.",
     x: 90,
     y: 60,
@@ -72,7 +72,7 @@ const TEAM_MEMBERS = [
   },
   {
     id: 9,
-    name: "Yana",
+    name: "Yana Pawar",
     quote: "Shaping digital dimensions.",
     x: 15,
     y: 77,
@@ -96,7 +96,7 @@ const TEAM_MEMBERS = [
   },
   {
     id: 12,
-    name: "Jayden",
+    name: "Jayden Haokip",
     quote: "Pushing the boundaries always.",
     x: 25,
     y: 22,
