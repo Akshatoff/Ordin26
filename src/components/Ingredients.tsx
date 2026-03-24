@@ -72,33 +72,33 @@ export default function Ingredients() {
       >
         {/* ROW 1 */}
         <img
-          src="/rect.avif"
+          src="/1.JPG"
           className="w-full h-full object-cover col-span-1 rounded-md"
           alt="Grid 1"
         />
         <img
-          src="/rect2.avif"
+          src="/2.JPG"
           className="w-full h-full object-cover col-span-2 rounded-md"
           alt="Grid 2"
         />
 
         {/* ROW 2 */}
         <img
-          src="/rect3.avif"
+          src="/3.JPG"
           className="w-full h-full object-cover col-span-1 rounded-md"
           alt="Grid 3"
         />
         {/* THE EMPTY CENTER HOLE */}
         <div className="w-full h-full col-span-1 bg-transparent"></div>
         <img
-          src="/rect4.avif"
+          src="/4.JPG"
           className="w-full h-full object-cover col-span-1 rounded-md"
           alt="Grid 4"
         />
 
         {/* ROW 3 */}
         <img
-          src="/rect5.avif"
+          src="/5.jpg"
           className="w-full h-full object-cover col-span-2 rounded-md"
           alt="Grid 5"
         />
