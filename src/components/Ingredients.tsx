@@ -11,35 +11,31 @@ export default function Ingredients() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Create a single master timeline for the whole sequence
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=300%", // Makes the scroll last longer for a smooth fly-through
-          pin: true, // Locks the section in place while we zoom
-          scrub: 1, // Ties animation directly to scrollbar
+          end: "+=300%",
+          pin: true,
+          scrub: 1,
         },
       });
 
-      // 1. ZOOM IN: Scale the grid up massively so the center hole fills the screen
       tl.to(gridRef.current, {
-        scale: 25, // Zoom factor (adjust higher if edges of images are still visible)
+        scale: 25,
         duration: 2,
         ease: "power2.inOut",
       });
 
-      // 2. FADE OUT GRID: Hide the stretched images once we are "inside" the hole
       tl.to(
         gridRef.current,
         {
           opacity: 0,
           duration: 0.2,
         },
-        "-=0.5", // Start fading out slightly before the zoom finishes
+        "-=0.5",
       );
 
-      // 3. FADE IN TEXT: The text appears out of the dark void
       tl.fromTo(
         textContentRef.current,
         { opacity: 0, scale: 0.9, y: 30 },
@@ -57,68 +53,82 @@ export default function Ingredients() {
   }, []);
 
   return (
-    // The main container. Needs h-screen and hidden overflow to trap the giant grid.
     <section
       id="ingredients-section"
       ref={sectionRef}
       className="relative w-full h-screen bg-black overflow-hidden z-20 flex items-center justify-center"
     >
-      {/* 1. THE ZOOMING IMAGE GRID */}
-      {/* We make it slightly larger than the screen (w-[120%]) so the edges don't show when it starts */}
+      {/* 1. FLEXBOX COLLAGE (Stable, no unpredictable masonry jumps) */}
       <div
         ref={gridRef}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vh] grid grid-cols-3 grid-rows-3 gap-4 p-8 pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vh] flex flex-col justify-between p-8 gap-4 pointer-events-none"
         style={{ transformOrigin: "center center" }}
       >
-        {/* ROW 1 */}
-        <img
-          src="/1.JPG"
-          className="w-full h-full object-cover col-span-1 rounded-md"
-          alt="Grid 1"
-        />
-        <img
-          src="/2.JPG"
-          className="w-full h-full object-cover col-span-2 rounded-md"
-          alt="Grid 2"
-        />
+        {/* Top Row: 2 Wide Landscape Photos */}
+        <div className="flex w-full h-[32%]">
+          <div className="relative w-1/2 h-full rounded-md overflow-hidden">
+            <img
+              src="/1.JPG"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              alt="Group 1"
+            />
+          </div>
+          <div className="relative w-1/2 h-full rounded-md overflow-hidden">
+            <img
+              src="/4.JPG"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              alt="Group 2"
+            />
+          </div>
+        </div>
 
-        {/* ROW 2 */}
-        <img
-          src="/3.JPG"
-          className="w-full h-full object-cover col-span-1 rounded-md"
-          alt="Grid 3"
-        />
-        {/* THE EMPTY CENTER HOLE */}
-        <div className="w-full h-full col-span-1 bg-transparent"></div>
-        <img
-          src="/4.JPG"
-          className="w-full h-full object-cover col-span-1 rounded-md"
-          alt="Grid 4"
-        />
+        {/* Middle Row: 2 smaller photos on the edges, MASSIVE void in the middle */}
+        <div className="flex w-full h-[32%] justify-between gap-4">
+          <div className="relative w-[30%] h-full rounded-md overflow-hidden">
+            <img
+              src="/5.jpg"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              alt="Group 3"
+            />
+          </div>
 
-        {/* ROW 3 */}
-        <img
-          src="/5.jpg"
-          className="w-full h-full object-cover col-span-2 rounded-md"
-          alt="Grid 5"
-        />
-        {/* I reused rect.avif here just to make 6 total images, replace with your actual 6th image */}
-        <img
-          src="/rect.avif"
-          className="w-full h-full object-cover col-span-1 rounded-md"
-          alt="Grid 6"
-        />
+          {/* THE VOID - Explicitly sized empty space to fly through */}
+          <div className="w-[40%] h-full bg-transparent flex-shrink-0"></div>
+
+          <div className="relative w-[30%] h-full rounded-md overflow-hidden">
+            <img
+              src="/2.JPG"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              alt="Group 4"
+            />
+          </div>
+        </div>
+
+        {/* Bottom Row: 2 Wide Landscape Photos */}
+        <div className="flex w-full h-[32%] gap-4">
+          <div className="relative w-1/2 h-full rounded-md overflow-hidden">
+            <img
+              src="/3.JPG"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              alt="Group 5"
+            />
+          </div>
+          <div className="relative w-1/2 h-full rounded-md overflow-hidden">
+            <img
+              src="/6.JPG"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              alt="Group 6"
+            />
+          </div>
+        </div>
       </div>
 
-      {/* 2. THE CONTENT BLOCK (Appears inside the void) */}
+      {/* 2. THE CONTENT BLOCK */}
       <div
         ref={textContentRef}
         className="relative z-10 w-full h-full flex flex-col justify-center px-4 md:px-12 text-white pointer-events-none"
       >
         <div className="w-full flex flex-col items-center mt-20">
-          {/* Top Centered Nav */}
-
-          {/* Huge Typography & Paragraph */}
           <div className="w-full flex flex-col md:flex-row justify-between items-end pointer-events-auto ml-5!">
             <div className="flex-1">
               <h2 className="text-5xl md:text-[4rem] font-black leading-none tracking-wider whitespace-nowrap font-druk mt-70!">

@@ -7,7 +7,7 @@ import Pillars from "./components/Pillars";
 import CanvasScene from "./components/CanvasScene";
 import Ingredients from "./components/Ingredients";
 import Team from "./components/Team";
-import Science from "./components/Science";
+import Update from "./components/Update";
 import Footer from "./components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -32,16 +32,16 @@ export default function App() {
     const ctx = gsap.context(() => {
       gsap.to(bgRef.current, {
         // 1. Move it up aggressively to reveal the bottom of your 240% tall image
-        yPercent: -55, 
+        yPercent: -55,
         ease: "none",
         scrollTrigger: {
           trigger: document.body,
           start: "top top",
-          // 2. CRITICAL FIX: Only stretch this animation over the first 1.5 screens! 
+          // 2. CRITICAL FIX: Only stretch this animation over the first 1.5 screens!
           // This makes it finish right as the Pillars section comes into view.
-          end: () => `+=${window.innerHeight * 1.2}`, 
+          end: () => `+=${window.innerHeight * 1.2}`,
           // 3. Set scrub to 'true' (or a low number like 0.5) to make it highly responsive
-          scrub: true, 
+          scrub: true,
         },
       });
     });
@@ -83,7 +83,7 @@ export default function App() {
           <Pillars />
           <Ingredients />
           <Team />
-          <Science />
+          <Update />
           <Footer />
         </main>
       </ReactLenis>
