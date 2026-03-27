@@ -80,7 +80,7 @@ export default function Updates() {
 
               {/* 2. Title & Location Block */}
               <div className="flex flex-col mb-6 md:mb-0 w-full md:w-2/4">
-                <h3 className="text-2xl md:text-4xl font-black tracking-wide mb-2 group-hover:translate-x-3 transition-transform duration-500 ease-out font-druk uppercase drop-shadow-lg">
+                <h3 className="text-xl md:text-3xl font-black tracking-wide mb-2 group-hover:translate-x-3 transition-transform duration-500 ease-out font-druk uppercase drop-shadow-lg">
                   {item.title}
                 </h3>
               </div>

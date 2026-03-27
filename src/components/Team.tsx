@@ -39,7 +39,7 @@ const TEAM_MEMBERS = [
   },
   {
     id: 5,
-    name: "Aradhya Bhola",  
+    name: "Aradhya Bhola",
     quote: "Crafting the final polish.",
     x: 90,
     y: 60,
@@ -47,19 +47,19 @@ const TEAM_MEMBERS = [
   },
   {
     id: 6,
-    name: "Aditya Choithani",
-    quote: "Bringing 3D to reality.",
-    x: 75,
-    y: 80,
-    img: "/rect.avif",
-  },
-  {
-    id: 7,
     name: "Shaurya Singh",
-    quote: "Chakka",
+    quote: "What is he doing",
     x: 50,
     y: 88,
     img: "/team/shaurya.jpg",
+  },
+  {
+    id: 7,
+    name: "Jayden Haokip",
+    quote: "Pushing the boundaries always.",
+    x: 25,
+    y: 22,
+    img: "/rect4.avif",
   },
   {
     id: 8,
@@ -75,7 +75,7 @@ const TEAM_MEMBERS = [
     quote: "Shaping digital dimensions.",
     x: 15,
     y: 77,
-    img: "/rect4.avif",
+    img: "/team/y.PNG",
   },
   {
     id: 10,
@@ -91,15 +91,16 @@ const TEAM_MEMBERS = [
     quote: "Engineering the impossible.",
     x: 10,
     y: 47,
-    img: "/rect4.avif",
+    img: "/team/shaarav.png",
   },
   {
     id: 12,
-    name: "Jayden Haokip",
-    quote: "Pushing the boundaries always.",
-    x: 25,
-    y: 22,
-    img: "/rect4.avif",
+
+    name: "Aditya Choithani",
+    quote: "Bringing 3D to reality.",
+    x: 75,
+    y: 80,
+    img: "/rect.avif",
   },
 ];
 
@@ -178,7 +179,8 @@ export default function Team() {
       <div className="relative z-10 flex flex-col items-center justify-center text-center pointer-events-none px-4">
         <h2 className="text-4xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tighter">
           Masters of All
-          <br />Trades
+          <br />
+          Trades
         </h2>
       </div>
 
@@ -186,7 +188,9 @@ export default function Team() {
       {TEAM_MEMBERS.map((member, index) => (
         <div
           key={member.id}
-          ref={(el) => { nodesRef.current[index] = el; }}
+          ref={(el) => {
+            nodesRef.current[index] = el;
+          }}
           className="group absolute flex items-center gap-3 bg-white px-2 md:p-3 rounded-full shadow-xl border border-black/5 hover:scale-110 transition-transform cursor-pointer z-20 hover:z-50 pointer-events-auto"
           style={{
             left: `${member.x}%`,
@@ -210,15 +214,17 @@ export default function Team() {
 
           {/* 4. THE UPGRADED TOOLTIP */}
           <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-60 p-2 bg-[#111111]/90 backdrop-blur-xl border border-white/10 text-white rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] z-50 transition-all duration-300 ease-out flex flex-col opacity-0 -translate-y-3 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
-            
             {/* Tooltip Triangle Arrow (Now points UP from the card to the node) */}
             <div className="absolute bottom-full left-1/2 -translate-x-1/2 border-[8px] border-transparent border-b-[#111111]/90 drop-shadow-lg"></div>
 
             {/* Huge Rectangular Image */}
+            {/* Huge Rectangular Image */}
             <img
               src={member.img}
               alt={member.name}
-              className="w-full h-40 rounded-xl object-cover mb-3 border border-white/5"
+              // object-[center_25%] aligns it horizontally center, and 25% from the top.
+              // 0% is the very top, 50% is dead center.
+              className="w-full h-40 rounded-xl object-cover object-[center_38%] mb-3 border border-white/5"
             />
 
             {/* Text Container */}
@@ -230,7 +236,6 @@ export default function Team() {
                 "{member.quote}"
               </p>
             </div>
-            
           </div>
         </div>
       ))}
