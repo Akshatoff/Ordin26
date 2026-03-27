@@ -4,7 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Updated array: Changed 'role' to 'name' and added a 'quote' for the tooltip
 const TEAM_MEMBERS = [
   {
     id: 1,
@@ -17,26 +16,26 @@ const TEAM_MEMBERS = [
   {
     id: 2,
     name: "Akshat Hatwal",
-    quote: "",
+    quote: "Khud Se Hi Naaraj Hun Me",
     x: 65,
     y: 14,
-    img: "/rect2.avif",
+    img: "/team/akshat.jpg",
   },
   {
     id: 3,
     name: "Jyotirmay Routray",
-    quote: "Logic meets creative vision.",
+    quote: ".",
     x: 88,
     y: 25,
     img: "/rect3.avif",
   },
   {
     id: 4,
-    name: "Shaurya Singh",
-    quote: "Motion that tells a story.",
+    name: "Viraaj Bhardwaj",
+    quote: "Ghayal hu isliye Ghatak Hu 😈",
     x: 90,
     y: 40,
-    img: "/rect4.avif",
+    img: "/team/vir.jpg",
   },
   {
     id: 5,
@@ -56,11 +55,11 @@ const TEAM_MEMBERS = [
   },
   {
     id: 7,
-    name: "Viraaj Bhardwaaj",
-    quote: "Directing the visual symphony.",
+    name: "Shaurya Singh",
+    quote: "Chakka",
     x: 50,
     y: 88,
-    img: "/rect2.avif",
+    img: "/team/shaurya.jpg",
   },
   {
     id: 8,
@@ -156,7 +155,8 @@ export default function Team() {
     <section
       id="team-section"
       ref={sectionRef}
-      className="relative z-40 w-full aspect-[4/3] md:aspect-video bg-white text-black overflow-hidden flex items-center justify-center z-20"
+      // CRITICAL: Removed overflow-hidden so bottom tooltips don't get cut off
+      className="relative z-40 w-full aspect-[4/3] md:aspect-video bg-white text-black flex items-center justify-center"
     >
       {/* 1. THE SVG PATH */}
       <svg
@@ -187,15 +187,14 @@ export default function Team() {
         <div
           key={member.id}
           ref={(el) => { nodesRef.current[index] = el; }}
-          // 1. The 'group' class is here
-          className="group absolute flex items-center gap-3 bg-white px-2! md:p-3 rounded-full shadow-xl border border-black/5 hover:scale-110 transition-transform cursor-pointer z-20 hover:z-50 pointer-events-auto"
+          className="group absolute flex items-center gap-3 bg-white px-2 md:p-3 rounded-full shadow-xl border border-black/5 hover:scale-110 transition-transform cursor-pointer z-20 hover:z-50 pointer-events-auto"
           style={{
             left: `${member.x}%`,
             top: `${member.y}%`,
             transform: "translate(-50%, -50%)",
           }}
         >
-          {/* Profile Picture */}
+          {/* Node Profile Picture */}
           <div className="w-8 h-8 md:w-12 md:h-12 rounded-full overflow-hidden shrink-0">
             <img
               src={member.img}
@@ -204,30 +203,34 @@ export default function Team() {
             />
           </div>
 
-          {/* Main Node Text */}
+          {/* Node Main Text */}
           <span className="text-[10px] md:text-xs font-bold tracking-widest whitespace-nowrap pr-2">
             {member.name}
           </span>
 
-          {/* 4. THE TOOLTIP */}
-          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-48 p-4 bg-black text-white rounded-xl shadow-2xl z-50 transition-all duration-300 ease-out flex flex-col items-center text-center opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
-            {/* Tooltip Image */}
+          {/* 4. THE UPGRADED TOOLTIP */}
+          <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-60 p-2 bg-[#111111]/90 backdrop-blur-xl border border-white/10 text-white rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] z-50 transition-all duration-300 ease-out flex flex-col opacity-0 -translate-y-3 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
+            
+            {/* Tooltip Triangle Arrow (Now points UP from the card to the node) */}
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 border-[8px] border-transparent border-b-[#111111]/90 drop-shadow-lg"></div>
+
+            {/* Huge Rectangular Image */}
             <img
               src={member.img}
               alt={member.name}
-              className="w-14 h-14 rounded-full object-cover border-2 border-white mb-3 shadow-md"
+              className="w-full h-40 rounded-xl object-cover mb-3 border border-white/5"
             />
 
-            {/* Tooltip Text */}
-            <span className="text-sm font-bold tracking-wider uppercase mb-1">
-              {member.name}
-            </span>
-            <p className="text-xs font-medium text-gray-300 italic leading-snug font-prim capitalize">
-              "{member.quote}"
-            </p>
-
-            {/* Tooltip Triangle Arrow */}
-            <div className="absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-black"></div>
+            {/* Text Container */}
+            <div className="flex flex-col text-center px-2 pb-2">
+              <span className="text-sm font-bold tracking-wider uppercase mb-1">
+                {member.name}
+              </span>
+              <p className="text-xs text-white/70 italic leading-snug font-medium capitalize">
+                "{member.quote}"
+              </p>
+            </div>
+            
           </div>
         </div>
       ))}
