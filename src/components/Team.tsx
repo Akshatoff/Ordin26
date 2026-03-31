@@ -17,7 +17,7 @@ const TEAM_MEMBERS = [
   {
     id: 2,
     name: "Akshat Hatwal",
-    quote: "Ye Aadat Paas Mujhe Laye",
+    quote: "Khoya Hua Piya",
     x: 65,
     y: 14,
     img: "/team/akshat.jpg",
