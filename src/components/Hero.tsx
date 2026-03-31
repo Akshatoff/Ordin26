@@ -57,7 +57,7 @@ export default function Hero() {
       {/* FIX 2: You can now use negative bottom values like -bottom-10, -bottom-20, etc. */}
       <div className="absolute -bottom-80 left-10 w-full flex justify-center pointer-events-none px-8">
         <img
-          src="/ordin.png"
+          src="/ordins.png"
           alt="Beyond Always"
           // FIX 3: Actually added the 'beyond-img' class to the string!
           className="w-full max-w-[80vw] md:max-w-5xl opacity-60 mix-blend-screen object-contain"

@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { RGBA_ASTC_12x12_Format } from "three";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,26 +12,18 @@ const TEAM_MEMBERS = [
     quote: "The chosen one",
     x: 40,
     y: 18,
-    img: "/rect.avif",
+    img: "/team/aneira.jpeg",
   },
   {
     id: 2,
     name: "Akshat Hatwal",
-    quote: "Khud Se Hi Naaraj Hun Me",
+    quote: "Ye Aadat Paas Mujhe Laye",
     x: 65,
     y: 14,
     img: "/team/akshat.jpg",
   },
   {
     id: 3,
-    name: "Jyotirmay Routray",
-    quote: ".",
-    x: 88,
-    y: 25,
-    img: "/rect3.avif",
-  },
-  {
-    id: 4,
     name: "Viraaj Bhardwaj",
     quote: "Ghayal hu isliye Ghatak Hu 😈",
     x: 90,
@@ -38,39 +31,40 @@ const TEAM_MEMBERS = [
     img: "/team/vir.jpg",
   },
   {
-    id: 5,
-    name: "Aradhya Bhola",
-    quote: "Crafting the final polish.",
-    x: 90,
-    y: 60,
-    img: "/rect5.avif",
-  },
-  {
-    id: 6,
+    id: 4,
     name: "Shaurya Singh",
     quote: "What is he doing",
-    x: 50,
-    y: 88,
+
+    x: 90,
+    y: 60,
     img: "/team/shaurya.jpg",
   },
   {
-    id: 7,
-    name: "Jayden Haokip",
-    quote: "Pushing the boundaries always.",
-    x: 25,
-    y: 22,
-    img: "/rect4.avif",
+    id: 5,
+    name: "Aradhya Bhola",
+    quote: "Crafting the final polish.",
+    x: 50,
+    y: 88,
+    img: "/team/aradhya.jpg",
   },
   {
-    id: 8,
+    id: 6,
+    name: "Jayden Haokip",
+    quote: "Pushing the boundaries always.",
+    x: 20,
+    y: 32,
+    img: "/team/jayden.png",
+  },
+  {
+    id: 7,
     name: "Neelanjan Pal",
     quote: "Soundscapes that evoke emotion.",
     x: 30,
     y: 85,
-    img: "/rect3.avif",
+    img: "/team/neelanjan.jpg",
   },
   {
-    id: 9,
+    id: 8,
     name: "Yana Pawar",
     quote: "Shaping digital dimensions.",
     x: 15,
@@ -78,15 +72,7 @@ const TEAM_MEMBERS = [
     img: "/team/y.PNG",
   },
   {
-    id: 10,
-    name: "Aarav Tokas",
-    quote: "Innovation in every frame.",
-    x: 12,
-    y: 62,
-    img: "/rect4.avif",
-  },
-  {
-    id: 11,
+    id: 9,
     name: "Shaarav Katoch",
     quote: "Engineering the impossible.",
     x: 10,
@@ -94,13 +80,12 @@ const TEAM_MEMBERS = [
     img: "/team/shaarav.png",
   },
   {
-    id: 12,
-
-    name: "Aditya Choithani",
+    id: 10,
+    name: "AR Nadal",
     quote: "Bringing 3D to reality.",
     x: 75,
     y: 80,
-    img: "/rect.avif",
+    img: "/team/nadal.jpg",
   },
 ];
 

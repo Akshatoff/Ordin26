@@ -31,7 +31,7 @@ export default function ScrollProgress() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-full z-[100] px-4 pt-4 md:px-8 md:pt-6 pointer-events-none">
+    <div className="fixed top-0 left-0 w-full z-[100] px-4! pt-4! md:px-8 md:pt-6 pointer-events-none">
       <div className="relative w-full h-3 md:h-4">
         {/* BACKGROUND TRACK: Unlit, semi-transparent ticks */}
         <div className="absolute inset-0 flex justify-between items-center w-full">
