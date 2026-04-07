@@ -135,7 +135,7 @@ export default function Ingredients() {
                 <span className="font-druknw tracking-normal">TEAM</span>{" "}
                 PYROTECH
               </h2>
-              <p className="max-w-[80vw] text-lg md:text-2xl leading-snug tracking-wide font-medium text-white mt-46! font-prim">
+              <p className="max-w-[95vw] text-lg md:text-2xl leading-snug tracking-wide font-medium text-white mt-40! font-prim">
                 PYROTECH members are an elite team of student computer
                 enthusiasts. They have represented the school in various
                 competitions and won laurels in events such as web designing,

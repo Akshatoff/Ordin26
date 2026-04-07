@@ -13,6 +13,7 @@ const TEAM_MEMBERS = [
     x: 40,
     y: 18,
     img: "/team/aneira.jpeg",
+    position: "President"
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const TEAM_MEMBERS = [
     x: 65,
     y: 14,
     img: "/team/akshat.jpg",
+    position: "Vice President"
   },
   {
     id: 3,
@@ -29,15 +31,16 @@ const TEAM_MEMBERS = [
     x: 90,
     y: 40,
     img: "/team/vir.jpg",
+    position: "Gaming Head"
   },
   {
     id: 4,
     name: "Shaurya Singh",
     quote: "What is he doing",
-
     x: 90,
     y: 60,
     img: "/team/shaurya.jpg",
+    position: "Programming Head"
   },
   {
     id: 5,
@@ -46,6 +49,7 @@ const TEAM_MEMBERS = [
     x: 50,
     y: 88,
     img: "/team/aradhya.jpg",
+    position: "Photographer"
   },
   {
     id: 6,
@@ -54,6 +58,7 @@ const TEAM_MEMBERS = [
     x: 20,
     y: 32,
     img: "/team/jayden.png",
+    position: "Editing Head"
   },
   {
     id: 7,
@@ -62,6 +67,7 @@ const TEAM_MEMBERS = [
     x: 30,
     y: 85,
     img: "/team/neelanjan.jpg",
+    position: ""
   },
   {
     id: 8,
@@ -70,6 +76,7 @@ const TEAM_MEMBERS = [
     x: 15,
     y: 77,
     img: "/team/y.PNG",
+    position: "Movie Making Head"
   },
   {
     id: 9,
@@ -78,6 +85,7 @@ const TEAM_MEMBERS = [
     x: 10,
     y: 47,
     img: "/team/shaarav.png",
+    position: "Photography Head"
   },
   {
     id: 10,
@@ -86,6 +94,7 @@ const TEAM_MEMBERS = [
     x: 75,
     y: 80,
     img: "/team/nadal.jpg",
+    position: "ProCoder"
   },
 ];
 
@@ -219,6 +228,9 @@ export default function Team() {
               </span>
               <p className="text-xs text-white/70 italic leading-snug font-medium capitalize">
                 "{member.quote}"
+              </p>
+              <p className="text-xs text-white/70 italic leading-snug font-medium capitalize">
+                {member.position}
               </p>
             </div>
           </div>
