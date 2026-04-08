@@ -15,27 +15,21 @@ export default function Ingredients() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=300%",
+          end: "+=300%", // Total scroll distance while pinned
           pin: true,
           scrub: 1,
         },
       });
 
+      // 1. Zoom the grid just enough so the video exactly fills the screen
+      // Scale 3.5 is the sweet spot for a 40%x32% container inside a 120vw/vh grid
       tl.to(gridRef.current, {
-        scale: 25,
-        duration: 2,
+        scale: 3.5, 
+        duration: 1, // Takes up the first half of the scroll
         ease: "power2.inOut",
       });
 
-      tl.to(
-        gridRef.current,
-        {
-          opacity: 0,
-          duration: 0.2,
-        },
-        "-=0.5",
-      );
-
+      // 2. Fade in the text AFTER the zoom has completely stopped
       tl.fromTo(
         textContentRef.current,
         { opacity: 0, scale: 0.9, y: 30 },
@@ -43,9 +37,9 @@ export default function Ingredients() {
           opacity: 1,
           scale: 1,
           y: 0,
-          duration: 1.0,
+          duration: 1, // Takes up the second half of the scroll
           ease: "power3.out",
-        },
+        }
       );
     }, sectionRef);
 
@@ -58,14 +52,14 @@ export default function Ingredients() {
       ref={sectionRef}
       className="relative w-full h-screen bg-black overflow-hidden z-20 flex items-center justify-center"
     >
-      {/* 1. FLEXBOX COLLAGE (Stable, no unpredictable masonry jumps) */}
+      {/* 1. FLEXBOX COLLAGE */}
       <div
         ref={gridRef}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vh] flex flex-col justify-between p-8 gap-4 pointer-events-none"
         style={{ transformOrigin: "center center" }}
       >
-        {/* Top Row: 2 Wide Landscape Photos */}
-        <div className="flex w-full h-[32%]">
+        {/* Top Row */}
+        <div className="flex w-full h-[32%] gap-4">
           <div className="relative w-1/2 h-full rounded-md overflow-hidden">
             <img
               src="/1.JPG"
@@ -82,7 +76,7 @@ export default function Ingredients() {
           </div>
         </div>
 
-        {/* Middle Row: 2 smaller photos on the edges, MASSIVE void in the middle */}
+        {/* Middle Row */}
         <div className="flex w-full h-[32%] justify-between gap-4">
           <div className="relative w-[30%] h-full rounded-md overflow-hidden">
             <img
@@ -92,8 +86,17 @@ export default function Ingredients() {
             />
           </div>
 
-          {/* THE VOID - Explicitly sized empty space to fly through */}
-          <div className="w-[40%] h-full bg-transparent flex-shrink-0"></div>
+          {/* THE VIDEO - Fills screen at scale 3.5 and stops */}
+          <div className="relative w-[40%] h-full rounded-md overflow-hidden bg-black flex-shrink-0">
+            <video
+              src="/ordin.mp4" // <-- Make sure to add your video path here
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
 
           <div className="relative w-[30%] h-full rounded-md overflow-hidden">
             <img
@@ -104,7 +107,7 @@ export default function Ingredients() {
           </div>
         </div>
 
-        {/* Bottom Row: 2 Wide Landscape Photos */}
+        {/* Bottom Row */}
         <div className="flex w-full h-[32%] gap-4">
           <div className="relative w-1/2 h-full rounded-md overflow-hidden">
             <img
@@ -140,7 +143,7 @@ export default function Ingredients() {
                 enthusiasts. They have represented the school in various
                 competitions and won laurels in events such as web designing,
                 software development, image editing, movie making, 3-D
-                modelling, Robotics, photography and others.
+                modelling.
               </p>
             </div>
           </div>

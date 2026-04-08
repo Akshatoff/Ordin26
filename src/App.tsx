@@ -77,8 +77,10 @@ export default function App() {
         <div className="fixed inset-0 z-30 pointer-events-none">
           <CanvasScene />
         </div>
-        <ScrollProgress></ScrollProgress>
-
+        {/* Progress tracker stays on the very top */}
+        <ScrollProgress /> 
+        {/* Header stays pinned but reacts to scrolling via mix-blend-difference */}
+        
         {/* Main Content */}
         <main className="relative w-full text-white font-sans uppercase">
           <Hero />

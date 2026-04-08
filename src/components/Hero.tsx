@@ -42,16 +42,16 @@ export default function Hero() {
       className="relative w-full h-screen overflow-x-clip"
     >
       <div className="absolute top-[25%] left-[10%] max-w-[200px] text-xs leading-relaxed tracking-wider font-main hero-text">
-        PURE FUNCTIONAL ELIXIR FOR PEAK MENTAL FOCUS AND PHYSICAL STAMINA
-      </div>
+  CUTTING-EDGE DIGITAL CRAFTSMANSHIP FUELING THE NEXT GENERATION OF INNOVATORS
+</div>
 
-      <div className="absolute top-[35%] right-[10%] max-w-[200px] text-xs leading-relaxed tracking-wider text-right font-main hero-text">
-        A DAILY RITUAL DESIGNED TO UNLOCK VITALITY AND SUSTAIN YOUR INNER DRIVE
-      </div>
+<div className="absolute top-[35%] right-[10%] max-w-[200px] text-xs leading-relaxed tracking-wider text-right font-main hero-text">
+  A SYNERGY OF CODE, DESIGN, AND HARDWARE ENGINEERED TO PUSH LIMITS
+</div>
 
-      <div className="absolute bottom-[30%] right-[25%] max-w-[250px] text-xs leading-relaxed tracking-wider font-main hero-text">
-        CRAFTED FROM NATURAL ORIGINS TO DELIVER HIGH-LEVEL COGNITIVE PERFORMANCE
-      </div>
+<div className="absolute bottom-[30%] right-[25%] max-w-[250px] text-xs leading-relaxed tracking-wider font-main hero-text">
+  DOMINATING THE TECH CIRCUIT THROUGH ELITE PROBLEM SOLVING AND CREATIVE EXECUTION
+</div>
 
       {/* BEYOND ALWAYS IMAGE */}
       {/* FIX 2: You can now use negative bottom values like -bottom-10, -bottom-20, etc. */}

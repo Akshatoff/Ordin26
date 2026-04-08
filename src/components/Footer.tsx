@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-black text-white pt-24 pb-8 px-6 md:px-12 flex flex-col z-20">
+    <footer className="relative w-full bg-black text-white pt-24 pb-8 px-6 md:px-12 flex flex-col z-50">
       {/* 1. HUGE TITLE AT THE TOP */}
       <div className="w-full mb-16 md:mb-24 flex flex-col justify-center items-center md:items-start border-b border-white/20 pb-8 md:pb-12">
         <h1 className="text-[14vw] md:text-[7vw] text-center font-black leading-none tracking-tighter opacity-90 font-druk uppercase whitespace-nowrap">
