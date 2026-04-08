@@ -21,35 +21,8 @@ export default function Footer() {
         <div className="flex gap-12 md:gap-24 text-sm tracking-[0.2em] font-bold font-prim uppercase">
           <ul className="space-y-6">
             <li>
-              <a href="#" className="hover:opacity-50 transition-opacity">
+              <a href="https://www.instagram.com/pyrotech_tisvv/" className="hover:opacity-50 transition-opacity">
                 INSTAGRAM
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:opacity-50 transition-opacity">
-                TIKTOK
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:opacity-50 transition-opacity">
-                TWITTER
-              </a>
-            </li>
-          </ul>
-          <ul className="space-y-6">
-            <li>
-              <a href="#" className="hover:opacity-50 transition-opacity">
-                CONTACT
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:opacity-50 transition-opacity">
-                PRIVACY
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:opacity-50 transition-opacity">
-                TERMS
               </a>
             </li>
           </ul>

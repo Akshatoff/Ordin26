@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// UPDATED WITH ALL 8 EVENTS FROM THE DOCUMENT
+// UPDATED WITH 10 EVENTS
 const PILLARS = [
   {
     title: "BREACH@TRIX",
@@ -54,6 +54,18 @@ const PILLARS = [
     subtitle: "GEAR MECHANISMS, CREATIVE DESIGN, FUNCTIONALITY",
     bgImage: "/Slide04.webp",
   },
+  {
+    title: "GAME@TRIX",
+    desc: "A high-energy online gaming competition featuring intense 5v5 Valorant matchups. Teams will battle it out over a two-day tournament, testing their tactical gameplay, coordination, and mechanical skills.",
+    subtitle: "REFLEXES, COORDINATION, COMPETITIVE GAMING",
+    bgImage: "/Slide001.webp",
+  },
+  {
+    title: "CRYPT@TRIX",
+    desc: "A 36-hour online cryptography-based challenge designed to test analytical and problem-solving skills. Participants must decipher clues and solve progressive standing questions to advance through maximum levels.",
+    subtitle: "CRYPTOGRAPHY, PROBLEM SOLVING, ANALYTICAL THINKING",
+    bgImage: "/Slide002.webp",
+  },
 ];
 
 export default function Pillars() {
@@ -87,7 +99,8 @@ export default function Pillars() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=800%",
+          // SCROLL DISTANCE: 1000% for 10 slides
+          end: "+=1000%",
           pin: true,
           scrub: true,
           onUpdate: (self) => {
@@ -103,7 +116,8 @@ export default function Pillars() {
                 (self.progress - startSlidesProgress) /
                 (1 - startSlidesProgress);
 
-              const index = Math.min(7, Math.floor(slideProgress * 8));
+              // MATH UPDATE: Calculate 10 slides (max index 9, multiply by 10)
+              const index = Math.min(9, Math.floor(slideProgress * 10));
 
               if (index !== activeIdxRef.current) {
                 activeIdxRef.current = index;
@@ -121,7 +135,7 @@ export default function Pillars() {
         uiRef.current,
         { opacity: 0 },
         { opacity: 1, duration: 1, ease: "power1.out" },
-      ).to({}, { duration: 16 });
+      ).to({}, { duration: 20 }); // DURATION UPDATE: Increased to 20 for 10 slides
     }, containerRef);
 
     return () => ctx.revert();
@@ -203,8 +217,9 @@ export default function Pillars() {
                 className="w-1/3 flex flex-col items-start text-left mr-40! font-prim text-xl leading-[1.14] antialiased"
                 key={`desc-${activeIdx}`}
               >
+                {/* DYNAMIC FRACTION FIXED: pads the numbers so it displays 01/10 instead of 01/010 */}
                 <div className="text-sm opacity-50 mb-4 animate-text font-prim antialiased">
-                  0{activeIdx + 1}/0{PILLARS.length}
+                  {String(activeIdx + 1).padStart(2, "0")}/{String(PILLARS.length).padStart(2, "0")}
                 </div>
                 <p className="text-[1rem] tracking-wider leading-relaxed max-w-[500px] animate-text font-prim antialiased">
                   {PILLARS[activeIdx].desc}
