@@ -27,7 +27,7 @@ const TEAM_MEMBERS = [
   {
     id: 3,
     name: "Viraaj Bhardwaj",
-    quote: "Ghayal hu isliye Ghatak Hu 😈",
+    quote: "obviously gaming",
     x: 90,
     y: 40,
     img: "/team/vir.jpg",
@@ -54,7 +54,7 @@ const TEAM_MEMBERS = [
   {
     id: 6,
     name: "Jayden Haokip",
-    quote: "Pushing the boundaries always.",
+    quote: "Manipur Final Boss",
     x: 20,
     y: 32,
     img: "/team/jayden.png",
@@ -72,7 +72,7 @@ const TEAM_MEMBERS = [
   {
     id: 8,
     name: "Yana Pawar",
-    quote: "Shaping digital dimensions.",
+    quote: "I don’t just make films, I make moments immortal.",
     x: 15,
     y: 77,
     img: "/team/y.PNG",

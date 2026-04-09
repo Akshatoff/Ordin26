@@ -183,20 +183,38 @@ export default function Pillars() {
             className="relative z-10 w-full h-full flex flex-col items-center justify-between py-12 px-12 opacity-0"
           >
             {/* Top Header & Navigation */}
-            <div className="w-full flex flex-col items-center gap-6 mt-[5rem]!">
-              <div className="flex flex-wrap text-xs tracking-widest pt-4 w-11/12 justify-center gap-2">
-                {PILLARS.map((pillar, i) => (
-                  <button
-                    key={i}
-                    className={`transition-all duration-500 cursor-default py-[10px]! px-[18px]! border border-solid border-white color-white backdrop-blur-xl text-[0.85rem] rounded-[100px] flex justify-center items-center pointer font-main bg-[rgba(255,255,255,0.2)] ${
-                      activeIdx === i ? "opacity-100 font-bold" : "opacity-40"
-                    }`}
-                  >
-                    {pillar.title}
-                  </button>
-                ))}
-              </div>
-            </div>
+<div className="w-full flex flex-col items-center gap-4 mt-[5rem]!">
+  {/* First Row: First 5 Events */}
+  <div className="flex flex-wrap text-xs tracking-widest w-11/12 justify-center gap-3">
+    {PILLARS.slice(0, 5).map((pillar, i) => (
+      <button
+        key={i}
+        className={`transition-all duration-500 cursor-default py-[10px]! px-[18px]! border border-solid border-white color-white backdrop-blur-xl text-[0.85rem] rounded-[100px] flex justify-center items-center font-main bg-[rgba(255,255,255,0.2)] ${
+          activeIdx === i ? "opacity-100 font-bold scale-105" : "opacity-40"
+        }`}
+      >
+        {pillar.title}
+      </button>
+    ))}
+  </div>
+
+  {/* Second Row: Last 5 Events */}
+  <div className="flex flex-wrap text-xs tracking-widest w-11/12 justify-center gap-3">
+    {PILLARS.slice(5, 10).map((pillar, i) => {
+      const actualIdx = i + 5; // Offset by 5 for the second half
+      return (
+        <button
+          key={actualIdx}
+          className={`transition-all duration-500 cursor-default py-[10px]! px-[18px]! border border-solid border-white color-white backdrop-blur-xl text-[0.85rem] rounded-[100px] flex justify-center items-center font-main bg-[rgba(255,255,255,0.2)] ${
+            activeIdx === actualIdx ? "opacity-100 font-bold scale-105" : "opacity-40"
+          }`}
+        >
+          {pillar.title}
+        </button>
+      );
+    })}
+  </div>
+</div>
 
             {/* Dynamic Content Middle */}
             <div className="w-full flex items-center justify-between mt-20">

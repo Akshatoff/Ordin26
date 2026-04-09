@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import Hero from "./components/Hero";
+import Header from "./components/Header";
 import Pillars from "./components/Pillars";
 import CanvasScene from "./components/CanvasScene";
 import Ingredients from "./components/Ingredients";
@@ -15,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   const lenisRef = useRef<LenisRef>(null);
-  const bgRef = useRef<HTMLImageElement>(null); // 1. NEW: Ref for the background image
+  const bgRef = useRef<HTMLImageElement>(null); 
 
   useEffect(() => {
     if (lenisRef.current?.lenis) {
@@ -29,19 +30,14 @@ export default function App() {
     gsap.ticker.add(updateLenis);
     gsap.ticker.lagSmoothing(0);
 
-    // 2. NEW: Make the background image actually scroll!
     const ctx = gsap.context(() => {
       gsap.to(bgRef.current, {
-        // 1. Move it up aggressively to reveal the bottom of your 240% tall image
         yPercent: -55,
         ease: "none",
         scrollTrigger: {
           trigger: document.body,
           start: "top top",
-          // 2. CRITICAL FIX: Only stretch this animation over the first 1.5 screens!
-          // This makes it finish right as the Pillars section comes into view.
           end: () => `+=${window.innerHeight * 1.2}`,
-          // 3. Set scrub to 'true' (or a low number like 0.5) to make it highly responsive
           scrub: true,
         },
       });
@@ -52,7 +48,7 @@ export default function App() {
       if (lenisRef.current?.lenis) {
         lenisRef.current.lenis.off("scroll", ScrollTrigger.update);
       }
-      ctx.revert(); // Clean up GSAP
+      ctx.revert(); 
     };
   }, []);
 
@@ -66,7 +62,7 @@ export default function App() {
       >
         <div className="fixed inset-0 z-0 overflow-hidden bg-[#160100]">
           <img
-            ref={bgRef} // 3. NEW: Attach the ref to the image
+            ref={bgRef} 
             src="/herodb.jpeg"
             alt="Background"
             className="absolute left-0 w-full h-[200%] -top-[0%] object-cover"
@@ -77,18 +73,32 @@ export default function App() {
         <div className="fixed inset-0 z-30 pointer-events-none">
           <CanvasScene />
         </div>
-        {/* Progress tracker stays on the very top */}
-        <ScrollProgress /> 
-        {/* Header stays pinned but reacts to scrolling via mix-blend-difference */}
         
-        {/* Main Content */}
+        {/* UI Elements */}
+        <ScrollProgress /> 
+        <Header />
+        
+        {/* Main Content - Added IDs to match the Header targets */}
         <main className="relative w-full text-white font-sans uppercase">
           <Hero />
-          <Pillars />
-          <Ingredients />
-          <Team />
+          
+          <div id="events-section">
+            <Pillars />
+          </div>
+          
+          <div id="about-section">
+            <Ingredients />
+          </div>
+          
+          <div id="team-section">
+            <Team />
+          </div>
+          
           <Update />
-          <Footer />
+          
+          <div id="contact-section">
+            <Footer />
+          </div>
         </main>
       </ReactLenis>
     </>

@@ -89,7 +89,7 @@ export default function Ingredients() {
           {/* THE VIDEO - Fills screen at scale 3.5 and stops */}
           <div className="relative w-[40%] h-full rounded-md overflow-hidden bg-black flex-shrink-0">
             <video
-              src="/ordin.mp4" // <-- Make sure to add your video path here
+              src="/teaser.mp4" // <-- Make sure to add your video path here
               autoPlay
               muted
               loop
