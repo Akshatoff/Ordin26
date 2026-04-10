@@ -27,7 +27,7 @@ const TEAM_MEMBERS = [
   {
     id: 3,
     name: "Viraaj Bhardwaj",
-    quote: "obviously gaming",
+    quote: "Amaze Amaze Amaze",
     x: 90,
     y: 40,
     img: "/team/vir.jpg",
@@ -36,7 +36,7 @@ const TEAM_MEMBERS = [
   {
     id: 4,
     name: "Shaurya Singh",
-    quote: "What is he doing",
+    quote: "She gets her way",
     x: 90,
     y: 60,
     img: "/team/shaurya.jpg",
@@ -96,6 +96,15 @@ const TEAM_MEMBERS = [
     img: "/team/nadal.jpg",
     position: "ProCoder"
   },
+  {
+    id:11,
+    name: "Jyotirmay Routray",
+    quote: "Jack of all trades",
+    x: 85,
+    y: 25,
+    img: "/team/jyotirmay.jpg",
+    position: "Creative Head"
+  }
 ];
 
 export default function Team() {
