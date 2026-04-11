@@ -81,7 +81,7 @@ const TEAM_MEMBERS = [
   {
     id: 9,
     name: "Shaarav Katoch",
-    quote: "Engineering the impossible.",
+    quote: "The One With The Camera.",
     x: 10,
     y: 47,
     img: "/team/shaarav.png",
