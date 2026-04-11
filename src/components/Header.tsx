@@ -21,7 +21,7 @@ export default function Header() {
   return (
     <>
     {/* 1. Removed mix-blend-difference and increased px-6 md:px-12 to px-8 md:px-20 */}
-    <header className="fixed top-8 left-0 w-full z-[100] pointer-events-none px-8 md:px-20 py-4">
+    <header className="fixed top-12 left-0 w-full z-[100] pointer-events-none px-8 md:px-20 py-4">
       <nav className="relative flex justify-end items-center w-full h-10">
         
         {/* 2. Changed -left-10 to left-0 so it perfectly hugs the inside padding */}
@@ -32,7 +32,7 @@ export default function Header() {
           <img 
             src="/logo.png" 
             alt="Pyrotech Logo"
-            className="h-[50px] md:h-[50px] w-auto object-contain transition-transform duration-300 group-hover:scale-95 origin-left"
+            className="h-[40px] md:h-[40px] w-auto object-contain transition-transform duration-300 group-hover:scale-95 origin-left"
           />
         </div>
 
