@@ -97,12 +97,12 @@ const TEAM_MEMBERS = [
     position: "ProCoder"
   },
   {
-    id:11,
+    id: 11,
     name: "Jyotirmay Routray",
-    quote: "Jack of all trades",
+    quote: "jootemaar rote ray",
     x: 85,
     y: 25,
-    img: "/team/jyotirmay.jpg",
+    img: "/team/jyoti.png",
     position: "Creative Head"
   }
 ];
@@ -148,7 +148,7 @@ export default function Team() {
           stagger: 0.15,
           ease: "back.out(1.5)",
         },
-        "<0.5",
+        "<0.5"
       );
     }, sectionRef);
 
@@ -159,7 +159,6 @@ export default function Team() {
     <section
       id="team-section"
       ref={sectionRef}
-      // CRITICAL: Removed overflow-hidden so bottom tooltips don't get cut off
       className="relative z-40 w-full aspect-[4/3] md:aspect-video bg-white text-black flex items-center justify-center"
     >
       {/* 1. THE SVG PATH */}
@@ -210,23 +209,27 @@ export default function Team() {
             />
           </div>
 
-          {/* Node Main Text */}
-          <span className="text-[10px] md:text-xs font-bold tracking-widest whitespace-nowrap pr-2">
-            {member.name}
-          </span>
+          {/* Node Main Text & Position */}
+          <div className="flex flex-col justify-center pr-2 md:pr-4">
+            {member.position && (
+              <span className="text-[8px] md:text-[9px] uppercase font-bold text-gray-400 tracking-widest leading-none mb-1">
+                {member.position}
+              </span>
+            )}
+            <span className="text-[10px] md:text-xs font-black tracking-widest whitespace-nowrap leading-none">
+              {member.name}
+            </span>
+          </div>
 
           {/* 4. THE UPGRADED TOOLTIP */}
           <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-60 p-2 bg-[#111111]/90 backdrop-blur-xl border border-white/10 text-white rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] z-50 transition-all duration-300 ease-out flex flex-col opacity-0 -translate-y-3 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
-            {/* Tooltip Triangle Arrow (Now points UP from the card to the node) */}
+            {/* Tooltip Triangle Arrow */}
             <div className="absolute bottom-full left-1/2 -translate-x-1/2 border-[8px] border-transparent border-b-[#111111]/90 drop-shadow-lg"></div>
 
-            {/* Huge Rectangular Image */}
             {/* Huge Rectangular Image */}
             <img
               src={member.img}
               alt={member.name}
-              // object-[center_25%] aligns it horizontally center, and 25% from the top.
-              // 0% is the very top, 50% is dead center.
               className="w-full h-40 rounded-xl object-cover object-[center_38%] mb-3 border border-white/5"
             />
 
@@ -237,9 +240,6 @@ export default function Team() {
               </span>
               <p className="text-xs text-white/70 italic leading-snug font-medium capitalize">
                 "{member.quote}"
-              </p>
-              <p className="text-xs text-white/70 italic leading-snug font-medium capitalize">
-                {member.position}
               </p>
             </div>
           </div>
