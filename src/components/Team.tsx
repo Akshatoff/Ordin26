@@ -67,7 +67,7 @@ const TEAM_MEMBERS = [
     x: 30,
     y: 85,
     img: "/team/neelanjan.jpg",
-    position: ""
+    position: "Crypter"
   },
   {
     id: 8,
