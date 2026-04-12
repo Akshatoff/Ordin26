@@ -49,7 +49,7 @@ const TEAM_MEMBERS = [
     x: 50,
     y: 88,
     img: "/team/aradhya.jpg",
-    position: "Photographer"
+    position: "Photography Head"
   },
   {
     id: 6,
@@ -91,8 +91,8 @@ const TEAM_MEMBERS = [
     id: 10,
     name: "AR Nadal",
     quote: "Bringing 3D to reality.",
-    x: 75,
-    y: 80,
+    x: 65,
+    y: 85,
     img: "/team/nadal.jpg",
     position: "ProCoder"
   },
@@ -104,6 +104,24 @@ const TEAM_MEMBERS = [
     y: 25,
     img: "/team/jyoti.png",
     position: "Creative Head"
+  },
+ {
+    id: 12,
+    name: "Medhansh Mathur",
+    quote: "Crafting Levels",
+    x: 85,
+    y: 75,
+    img: "/team/medhansh.jpeg",
+    position: "Crypter"
+  },
+ {
+    id: 13,
+    name: "Abeer Kumar",
+    quote: "The one who makes bots",
+    x: 10,
+    y: 63,
+    img: "/team/abeer.jpeg",
+    position: "Member"
   }
 ];
 
