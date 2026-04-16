@@ -13,7 +13,7 @@ const TEAM_MEMBERS = [
     x: 40,
     y: 18,
     img: "/team/aneira.jpeg",
-    position: "President"
+    position: "President",
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const TEAM_MEMBERS = [
     x: 65,
     y: 14,
     img: "/team/akshat.jpg",
-    position: "Vice President"
+    position: "Vice President",
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const TEAM_MEMBERS = [
     x: 90,
     y: 40,
     img: "/team/vir.jpg",
-    position: "Gaming Head"
+    position: "Gaming Head",
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const TEAM_MEMBERS = [
     x: 90,
     y: 60,
     img: "/team/shaurya.jpg",
-    position: "Programming Head"
+    position: "Programming Head",
   },
   {
     id: 5,
@@ -49,16 +49,16 @@ const TEAM_MEMBERS = [
     x: 50,
     y: 88,
     img: "/team/aradhya.jpg",
-    position: "Photography Head"
+    position: "Photography Head",
   },
   {
     id: 6,
     name: "Jayden Haokip",
     quote: "Manipur Final Boss",
     x: 20,
-    y: 32,
+    y: 22,
     img: "/team/jayden.png",
-    position: "Editing Head"
+    position: "Editing Head",
   },
   {
     id: 7,
@@ -67,7 +67,7 @@ const TEAM_MEMBERS = [
     x: 30,
     y: 85,
     img: "/team/neelanjan.jpg",
-    position: "Crypter"
+    position: "Crypter",
   },
   {
     id: 8,
@@ -76,16 +76,16 @@ const TEAM_MEMBERS = [
     x: 15,
     y: 77,
     img: "/team/y.PNG",
-    position: "Movie Making Head"
+    position: "Movie Making Head",
   },
   {
     id: 9,
     name: "Shaarav Katoch",
     quote: "The One With The Camera.",
     x: 10,
-    y: 47,
+    y: 37,
     img: "/team/shaarav.png",
-    position: "Photography Head"
+    position: "Photography Head",
   },
   {
     id: 10,
@@ -94,7 +94,7 @@ const TEAM_MEMBERS = [
     x: 65,
     y: 85,
     img: "/team/nadal.jpg",
-    position: "ProCoder"
+    position: "ProCoder",
   },
   {
     id: 11,
@@ -103,26 +103,35 @@ const TEAM_MEMBERS = [
     x: 85,
     y: 25,
     img: "/team/jyoti.png",
-    position: "Creative Head"
+    position: "Creative Head",
   },
- {
+  {
     id: 12,
     name: "Medhansh Mathur",
     quote: "Crafting Levels",
     x: 85,
     y: 75,
     img: "/team/medhansh.jpeg",
-    position: "Crypter"
+    position: "Crypter",
   },
- {
+  {
     id: 13,
     name: "Abeer Kumar",
     quote: "The one who makes bots",
     x: 10,
     y: 63,
     img: "/team/abeer.jpeg",
-    position: "Member"
-  }
+    position: "Member",
+  },
+  {
+    id: 14,
+    name: "Saksham Gupta",
+    quote: "Just saksham gupta",
+    x: 10,
+    y: 47,
+    img: "/team/saksham.jpeg",
+    position: "Robotics Head",
+  },
 ];
 
 export default function Team() {
@@ -166,7 +175,7 @@ export default function Team() {
           stagger: 0.15,
           ease: "back.out(1.5)",
         },
-        "<0.5"
+        "<0.5",
       );
     }, sectionRef);
 
