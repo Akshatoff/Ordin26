@@ -67,7 +67,7 @@ const TEAM_MEMBERS = [
     x: 30,
     y: 85,
     img: "/team/neelanjan.jpg",
-    position: "Crypter",
+    position: "Crypt Head",
   },
   {
     id: 8,
@@ -112,7 +112,7 @@ const TEAM_MEMBERS = [
     x: 85,
     y: 75,
     img: "/team/medhansh.jpeg",
-    position: "Crypter",
+    position: "Crypt Head",
   },
   {
     id: 13,
@@ -126,7 +126,7 @@ const TEAM_MEMBERS = [
   {
     id: 14,
     name: "Saksham Gupta",
-    quote: "Just saksham gupta",
+    quote: "I dont play the odds, I play the man",
     x: 10,
     y: 47,
     img: "/team/saksham.jpeg",
